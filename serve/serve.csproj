@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images" />
+  </ItemGroup>
+  
+  <!-- Dotnet Tool Specific settings -->
+  <PropertyGroup>
+    <PackAsTool>true</PackAsTool>
+    <PackageId>spa-server</PackageId>
+    <ToolCommandName>spa-server</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+</Project>
