@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Reflection;
 using serve.HttpHandlers;
 
 namespace serve
@@ -29,7 +27,6 @@ namespace serve
         {
 	        bool hostAltered = false;
 	        (string hostname, int port, string webRootPath) = Utils.ParseArguments(args);
-	        
 	        
 	        Console.CancelKeyPress += delegate {
 		        Console.WriteLine("Ctrl-C. Exiting.");
@@ -65,6 +62,7 @@ namespace serve
 			        }
 
 			        ResponseHandlers.Handle(requestedResource, stream);
+			        client.Shutdown(SocketShutdown.Both);
 		        }
 	        }
 	        catch (Exception ex)
