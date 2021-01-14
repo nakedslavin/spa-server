@@ -1,14 +1,18 @@
-Simple SOCKET-based HTTP server to serve static files form the local folder.
+### Simple SOCKET-based HTTP server to serve static files form the local folder.
 Used for SPA development purposes.
 
 Installation:
 
 Either run:
+
 `dotnet run -- {options?}`
 
 Or install globally:
+
 `dotnet tool install -g spa-server --add-source serve/nupkg`
+
 and then simply:
+
 `spa-server {options?}`
 
 Options:
