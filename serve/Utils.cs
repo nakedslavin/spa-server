@@ -121,13 +121,21 @@ namespace serve
         {
             {".html", FileType.Text}, {".htm", FileType.Text},
             {".jpg", FileType.Binary}, {".jpeg", FileType.Binary},
-            {".ico", FileType.Binary}, {".css", FileType.Text}, {".js", FileType.Text},
+            {".ico", FileType.Binary}, {".css", FileType.Text}, {".js", FileType.Text},{".svg", FileType.Text},
             {".json", FileType.Text}, {".txt", FileType.Text},{".map", FileType.Text},
             {".gif", FileType.Binary}, {".png", FileType.Binary},
         };
 
-        public static string MimeTypeFromExtension(string extension) => ExtensionFileTypes[extension] == FileType.Text
-            ? $"text/{extension.TrimStart('.')}"
-            : $"image/{extension.TrimStart('.').Replace("jpg","jpeg")}";
+        public static string MimeTypeFromExtension(string extension)
+        {
+            if (ExtensionFileTypes[extension] == FileType.Text)
+            {
+                string mime = $"text/{extension.TrimStart('.')}";
+                if (extension == ".svg") mime = "image/svg+xml";
+                return mime;
+            }
+            else
+                return $"image/{extension.TrimStart('.').Replace("jpg", "jpeg")}";
+        }
     }
 }
